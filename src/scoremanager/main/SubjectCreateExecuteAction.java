@@ -40,14 +40,14 @@ public class SubjectCreateExecuteAction extends Action{
 			errors.put("cd", "科目コードが重複しています");
 			req.setAttribute("errors", errors);
 			req.getRequestDispatcher("subject_create.jsp").forward(req, res);
+		} else {
+			Subject sub = new Subject();
+			sub.setCd(cd);
+			sub.setName(name);
+			sub.setSchool(teacher.getSchool());
+			jDao.save(sub);
 		}
 
-		Subject sub = new Subject();
-		sub.setCd(cd);
-		sub.setName(name);
-		sub.setSchool(teacher.getSchool());
-
-		boolean flag = jDao.save(sub);
 		req.getRequestDispatcher("subject_create_done.jsp").forward(req, res);
 	}
 }
