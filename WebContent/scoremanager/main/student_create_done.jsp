@@ -12,7 +12,9 @@
 	<c:param name="content">
 		<section class="me-4">
 			<h2 class="h3 mb-3 fw-norma bg-secondary bg-opacity-10 py-2 px-4">学生情報登録</h2>
-			<p>登録が完了しました。</p>
+			<div class="bg-success bg-opacity-50 text-center lh-lg">
+				<p>登録が完了しました。</p>
+			</div>
 			<a href="StudentCreate.action">戻る</a>
 			<a href="StudentList.action">学生一覧</a>
 		</section>

@@ -15,7 +15,7 @@
 			<form action="SubjectDeleteExecute.action" method="post">
 				<input type="hidden" value="${sub_date.cd}" name="cd">
 				<p>「${sub_date.name}(${sub_date.cd})を削除してもよろしいでしょうか</p><br>
-				<button class="btn btn-secondary">削除</button>
+				<button class="btn btn-danger">削除</button>
 				<br>
 				<a href="SubjectList.action">戻る</a>
 			</form>
