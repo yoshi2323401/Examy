@@ -23,9 +23,6 @@ public class SubjectUpdateExecuteAction extends Action{
 		String name = req.getParameter("name");
 		Map<String, String> errors = new HashMap<>(); // エラーメッセージ
 
-		Subject sub = new Subject();
-		sub.setCd(cd);
-		sub.setName(name);
 
 		SubjectDao jDao = new SubjectDao();
 		Subject hantei = jDao.get(cd, teacher.getSchool());
@@ -37,9 +34,13 @@ public class SubjectUpdateExecuteAction extends Action{
 			errors.put("cd", "科目が存在していません");
 			req.setAttribute("errors", errors);
 			req.getRequestDispatcher("subject_update.jsp").forward(req, res);
+		} else {
+			Subject sub = new Subject();
+			sub.setCd(cd);
+			sub.setName(name);
+			sub.setSchool(teacher.getSchool());
+			boolean hamu = jDao.save(sub);
+			req.getRequestDispatcher("subject_update_done.jsp").forward(req, res);
 		}
-		jDao.save(sub);
-
-		req.getRequestDispatcher("subject_update_done.jsp").forward(req, res);
 	}
 }
